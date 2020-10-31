@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seobae <seobae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seobae <seobae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 12:07:33 by seobae            #+#    #+#             */
-/*   Updated: 2020/10/31 20:03:30 by seobae           ###   ########.fr       */
+/*   Updated: 2020/10/31 22:23:26 by seobae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,49 +60,6 @@ int		ft_get_number_lines(char **lines)
 	return (i);
 }
 
-int		is_whitespace(char c)
-{
-	return (c == ' ' || c == '\n' || c == '\v' ||
-			c == '\t' || c == '\r' || c == '\f');
-}
-
-char	*ft_str_cut(char *str, int start, int end)
-{
-	int		index;
-	char	*result;
-
-	index = 0;
-	result = malloc(sizeof(char) * (end - start + 1));
-	while (start + index < end)
-	{
-		result[index] = str[start + index];
-		index++;
-	}
-	result[index] = '\0';
-	free(str);
-	return (result);
-}
-
-char	*ft_strip(char *str)
-{
-	int	size;
-	int	index;
-	int	start;
-	int	end;
-
-	index = 0;
-	size = 0;
-	while (str[size])
-		size++;
-	while (is_whitespace(str[index]))
-		index++;
-	start = index;
-	while (is_whitespace(str[size - 1]))
-		size--;
-	end = size;
-	return (ft_str_cut(str, start, end + 1));
-}
-
 t_dict	*ft_parsing(char **dict, int len)
 {
 	int		i;
@@ -141,11 +98,10 @@ t_dict	*ft_init_dict(void)
 
 int		main(void)
 {
+	int		i;
 	t_dict	*dict;
 
 	dict = ft_init_dict();
-	int i;
-
 	i = 0;
 	while (dict[i].text != '\0')
 	{

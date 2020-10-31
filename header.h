@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seobae <seobae@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: seobae <seobae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 12:15:08 by seobae            #+#    #+#             */
-/*   Updated: 2020/10/31 17:20:32 by seobae           ###   ########.fr       */
+/*   Updated: 2020/10/31 22:24:09 by seobae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ typedef struct	s_dict
 }				t_dict;
 
 char	**ft_split(char *str, char target);
+char	*ft_strip(char *str);
 
 #endif

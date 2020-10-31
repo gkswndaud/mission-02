@@ -8,6 +8,7 @@
 7: seven
 8: eight
 9: nine
+
 10: ten
 11: eleven
 12: twelve
@@ -18,6 +19,7 @@
 17: seventeen
 18: eighteen
 19: nineteen
+
 20: twenty
 30: thirty
 40: forty
@@ -27,6 +29,7 @@
 80: eighty
 90: ninety
 100: hundred
+
 1000: thousand
 1000000: million
 1000000000: billion
