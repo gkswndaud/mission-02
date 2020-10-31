@@ -6,7 +6,7 @@
 /*   By: seobae <seobae@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 12:07:33 by seobae            #+#    #+#             */
-/*   Updated: 2020/10/31 17:41:15 by seobae           ###   ########.fr       */
+/*   Updated: 2020/10/31 20:03:30 by seobae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ int		ft_get_number_lines(char **lines)
 	return (i);
 }
 
-int		is_whitespace(char ch)
+int		is_whitespace(char c)
 {
-	return (ch == ' ' || ch == '\n' || ch == '\v' ||
-			ch == '\t' || ch == '\r');
+	return (c == ' ' || c == '\n' || c == '\v' ||
+			c == '\t' || c == '\r' || c == '\f');
 }
 
-char	*str_cut(char *str, int start, int end)
+char	*ft_str_cut(char *str, int start, int end)
 {
 	int		index;
 	char	*result;
@@ -83,7 +83,7 @@ char	*str_cut(char *str, int start, int end)
 	return (result);
 }
 
-char	*ft_strip_free(char *str)
+char	*ft_strip(char *str)
 {
 	int	size;
 	int	index;
@@ -91,14 +91,16 @@ char	*ft_strip_free(char *str)
 	int	end;
 
 	index = 0;
-	size = str_len(str);
+	size = 0;
+	while (str[size])
+		size++;
 	while (is_whitespace(str[index]))
 		index++;
 	start = index;
 	while (is_whitespace(str[size - 1]))
 		size--;
 	end = size;
-	return (str_cut(str, start, end + 1));
+	return (ft_str_cut(str, start, end + 1));
 }
 
 t_dict	*ft_parsing(char **dict, int len)
@@ -115,8 +117,8 @@ t_dict	*ft_parsing(char **dict, int len)
 		value = ft_split(dict[i], ':');
 		if (value == 0)
 			continue ;
-		dict_src[i].number = value[0];
-		dict_src[i].text = value[1];
+		dict_src[i].number = ft_strip(value[0]);
+		dict_src[i].text = ft_strip(value[1]);
 		i++;
 	}
 	dict_src[i].text = NULL;
@@ -147,7 +149,7 @@ int		main(void)
 	i = 0;
 	while (dict[i].text != '\0')
 	{
-		printf("%s --- %s\n", dict[i].number, dict[i].text);
+		printf("|%s|---|%s|\n", dict[i].number, dict[i].text);
 		i++;
 	}
 	return (0);
